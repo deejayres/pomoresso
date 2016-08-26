@@ -1,11 +1,11 @@
 <div class="container">
     <div class="row main">
         <div class="two-thirds column">
-            <div class="timer">
+            <div ng-controller="TimerCtrl as timer" class="timer">
                 <h2>Work!</h2>
-                <h1>25:00</h1>
-                <button class="button-primary">Start</button>
-                <button class="button-primary">Reset</button>
+                <h1 ng-bind="timer.session.ticker"></h1>
+                <button class="button-primary" ng-click="timer.session.startSession()">Start</button>
+                <button class="button-primary" ng-click="timer.session.resetSession()">Reset</button>
             </div>
         </div>
         <div class="one-third column">
