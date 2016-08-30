@@ -1,27 +1,33 @@
 (function() {
-    function Sessions($interval) {
+    function Sessions($interval, SESSIONS) {
         var Sessions = {};
-
-        // duration of session types in seconds
-        // var workSession = 1500;
-        // var breakSession = 300;
-        // var longBreakSession = 1800;
-
-        //short durations for testing
-        var workSession = 15;
-        var breakSession = 3;
-        var longBreakSession = 18;
 
         //is the $interval running?
         var intervalRunning = null;
 
-        Sessions.ticker = workSession;
+        //the timer ticker
+        //default
+        Sessions.ticker = SESSIONS.WORK
+
+        //function to return currect timer amount depending on onBreak.
+        function whatSession() {
+            if (Sessions.onBreak) {
+                Sessions.ticker = SESSIONS.BREAK;
+            } else {
+                Sessions.ticker = SESSIONS.WORK;
+            }
+        };
+
+        //is it time for a break?
+        Sessions.onBreak = false;
 
         Sessions.startSession = function() {
             intervalRunning = $interval(function() {
                 Sessions.ticker--;
                 if (Sessions.ticker == 0) {
+                    Sessions.onBreak = !Sessions.onBreak;
                     $interval.cancel(intervalRunning);
+                    whatSession();
                 }
             }, 1000);
         }
@@ -30,7 +36,7 @@
             if (intervalRunning) {
                 $interval.cancel(intervalRunning);
                 intervalRunning = null;
-                Sessions.ticker = workSession;
+                Sessions.ticker = SESSIONS.WORK;
             }
         }
 
@@ -39,5 +45,5 @@
 
     angular
         .module('pomoresso')
-        .factory('Sessions', ['$interval', Sessions]);
+        .factory('Sessions', ['$interval', 'SESSIONS', Sessions]);
 })();
