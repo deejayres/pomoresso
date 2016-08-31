@@ -25,6 +25,11 @@
             }
         }
 
+        //buzz object for ding sound
+        var ding = new buzz.sound("/assets/ding.mp3", {
+            preload: true
+        });
+
         //is it time for a break?
         Sessions.onBreak = false;
 
@@ -40,6 +45,7 @@
                         Sessions.onBreak = !Sessions.onBreak;
                         $interval.cancel(intervalRunning);
                         intervalRunning = null;
+                        ding.play();
                         whatSession();
                     }
                 }, 1000);
