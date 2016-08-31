@@ -4,7 +4,7 @@
             <div ng-controller="TimerCtrl as timer" class="timer">
                 <h2 ng-hide="timer.session.onBreak">Work!</h2>
                 <h2 ng-show="timer.session.onBreak">Break!</h2>
-                <h1 ng-bind="timer.session.ticker"></h1>
+                <h1 ng-bind="(timer.session.ticker | timecode)"></h1>
                 <button class="button-primary" ng-click="timer.session.startSession()">Start</button>
                 <button class="button-primary" ng-click="timer.session.resetSession()">Reset</button>
             </div>
