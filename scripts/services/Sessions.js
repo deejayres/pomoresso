@@ -10,7 +10,7 @@
 
         //the timer ticker
         //default
-        Sessions.ticker = SESSIONS.WORK
+        Sessions.ticker = SESSIONS.WORK;
 
         //function to return currect timer amount depending on onBreak.
         function whatSession() {
@@ -23,7 +23,7 @@
             } else {
                 Sessions.ticker = SESSIONS.WORK;
             }
-        };
+        }
 
         //is it time for a break?
         Sessions.onBreak = false;
@@ -32,10 +32,10 @@
             if (!intervalRunning) {
                 intervalRunning = $interval(function() {
                     Sessions.ticker--;
-                    if (Sessions.ticker == 0) {
+                    if (Sessions.ticker === 0) {
                         if (!Sessions.onBreak) {
                             completedSessions++;
-                            console.log("Completed Sessions: " + completedSessions)
+                            console.log("Completed Sessions: " + completedSessions);
                         }
                         Sessions.onBreak = !Sessions.onBreak;
                         $interval.cancel(intervalRunning);
@@ -44,7 +44,7 @@
                     }
                 }, 1000);
             }
-        }
+        };
 
         Sessions.resetSession = function() {
             if (intervalRunning) {
@@ -52,7 +52,7 @@
                 intervalRunning = null;
                 whatSession();
             }
-        }
+        };
 
         return Sessions;
     }
