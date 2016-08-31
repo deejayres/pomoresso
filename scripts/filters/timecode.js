@@ -1,8 +1,6 @@
  (function() {
      function timecode() {
          return function(seconds) {
-            //  seconds = Number.parseFloat(seconds);
-            //  var wholeSeconds = Math.floor(seconds);
              var minutes = Math.floor(seconds / 60);
              var remainingSeconds = seconds % 60;
 
