@@ -10,25 +10,23 @@
             </div>
         </div>
         <div class="one-third column">
-            <div class="list">
+            <div ng-controller="TaskCtrl as taskctrl" class="list">
                 <h4>Tasks</h4>
-                <ul>
-                    <li>
-                        Task Task Task
-                    </li>
-                    <li>
-                        More Task task
-                    </li>
-                    <li>
-                        Oh yes, another task except this one is long
-                    </li>
-                    <li>
-                        Yet another
-                    </li>
-                    <li>
-                        And another
-                    </li>
-                </ul>
+                <table ng-repeat="task in taskctrl.tasks.all">
+                    <tr>
+                        <td ng-mouseover="hovered = true" ng-mouseleave="hovered = false" ng-click="taskctrl.tasks.removeItem(task)" class="checkcircle">
+                            <span ng-show="!hovered" class="ion-android-radio-button-off"></span>
+                            <span ng-show="hovered" class="ion-android-checkmark-circle"></span>
+                        </td>
+                        <td>
+                            {{task.title}}
+                        </td>
+                    </tr>
+                </table>
+                <form ng-submit="taskctrl.tasks.addItem()">
+                    <label>Enter task:</label>
+                    <input type="text" ng-model="taskctrl.tasks.newItem"/>
+                </form>
             </div>
         </div>
     </div>

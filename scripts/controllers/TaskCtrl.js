@@ -1,9 +1,9 @@
 (function() {
-    function TaskCtrl() {
-
+    function TaskCtrl(Tasks) {
+        this.tasks = Tasks;
     }
 
     angular
         .module('pomoresso')
-        .controller('TaskCtrl', TaskCtrl);
+        .controller('TaskCtrl', ['Tasks', TaskCtrl]);
 })();
