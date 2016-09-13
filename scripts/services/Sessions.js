@@ -26,7 +26,7 @@
         }
 
         //buzz object for ding sound
-        var ding = new buzz.sound("/assets/ding.mp3", {
+        var ding = new buzz.sound("assets/ding.mp3", {
             preload: true
         });
 
