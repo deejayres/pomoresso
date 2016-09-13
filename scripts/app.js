@@ -16,15 +16,9 @@
     angular
         .module('pomoresso', ['ui.router', 'firebase'])
         .config(config)
-        // duration of session types in seconds
-        // work = 1500;
-        // break = 300;
-        // long_break = 1800;
-
-        //short durations for testing
         .constant("SESSIONS", {
-            "WORK": 15,
-            "BREAK": 3,
-            "LONG_BREAK": 18
+            "WORK": 1500,
+            "BREAK": 300,
+            "LONG_BREAK": 1800
         });
 })();
