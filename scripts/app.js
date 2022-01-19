@@ -17,7 +17,7 @@
         .module('pomoresso', ['ui.router', 'firebase'])
         .config(config)
         .constant("SESSIONS", {
-            "WORK": 1500,
+            "WORK": 1800,
             "BREAK": 300,
             "LONG_BREAK": 1800
         });
